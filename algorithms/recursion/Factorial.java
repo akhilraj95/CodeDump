@@ -9,7 +9,12 @@ public class Factorial {
 
     public static BigInteger of(BigInteger n){
         
-        if(n.equals(BigInteger.ONE)) return BigInteger.ONE;
-        return n.multiply(of(n.subtract(BigInteger.ONE)));
+        return of(BigInteger.ONE, n);
+    }
+
+    public static BigInteger of(BigInteger accumulator, BigInteger n) {
+        
+        if(n.equals(BigInteger.ONE)) return accumulator;
+        return of(n.multiply(accumulator), n.subtract(BigInteger.ONE));
     }
 }
